@@ -1,0 +1,22 @@
+schema_version: 1
+project:
+  id: landing-dashboard
+  name: Landing Dashboard
+  description: Public portfolio, project directory, and navigation UI.
+  status: scaffolded
+  visibility: public
+application:
+  path: apps/landing-dashboard
+  type: nextjs
+  runtime: node
+  deployable: true
+dependencies:
+  forge_core: false
+  packages:
+    - ui-components
+deployment:
+  service_name: landing-dashboard
+  healthcheck: /
+  domain: null
+owners: []
+tags: [portfolio, navigation, public]

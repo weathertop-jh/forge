@@ -1,0 +1,24 @@
+schema_version: 1
+project:
+  id: prompt-dashboard
+  name: Prompt Dashboard
+  description: Migrated Athena prompt-engineering tool.
+  status: scaffolded
+  visibility: private
+application:
+  path: apps/prompt-dashboard
+  type: nextjs
+  runtime: node
+  deployable: true
+dependencies:
+  forge_core: true
+  packages:
+    - forge-sdk
+    - ui-components
+    - eval-utils
+deployment:
+  service_name: prompt-dashboard
+  healthcheck: /
+  domain: null
+owners: []
+tags: [prompts, athena-migration, internal]

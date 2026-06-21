@@ -1,0 +1,24 @@
+schema_version: 1
+project:
+  id: rag-playground
+  name: RAG Playground
+  description: Workbench for retrieval-augmented generation workflows.
+  status: scaffolded
+  visibility: private
+application:
+  path: apps/rag-playground
+  type: nextjs
+  runtime: node
+  deployable: true
+dependencies:
+  forge_core: true
+  packages:
+    - forge-sdk
+    - ui-components
+    - rag-utils
+deployment:
+  service_name: rag-playground
+  healthcheck: /
+  domain: null
+owners: []
+tags: [rag, pgvector, internal]

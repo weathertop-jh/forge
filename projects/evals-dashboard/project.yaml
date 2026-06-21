@@ -1,0 +1,24 @@
+schema_version: 1
+project:
+  id: evals-dashboard
+  name: Evals Dashboard
+  description: Interface for defining, running, and reviewing AI evaluations.
+  status: scaffolded
+  visibility: private
+application:
+  path: apps/evals-dashboard
+  type: nextjs
+  runtime: node
+  deployable: true
+dependencies:
+  forge_core: true
+  packages:
+    - forge-sdk
+    - ui-components
+    - eval-utils
+deployment:
+  service_name: evals-dashboard
+  healthcheck: /
+  domain: null
+owners: []
+tags: [evals, quality, internal]

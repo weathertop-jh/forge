@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "forge-mcp"
+version = "0.1.0"
+description = "Security-conscious MCP control surface for Forge"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.0"]
+
+[project.scripts]
+forge-mcp = "forge_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/forge_mcp"]
