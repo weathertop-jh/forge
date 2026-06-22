@@ -10,7 +10,7 @@ trap 'rm -rf "$ROOT"' EXIT
 required_dirs=(
   apps/landing-dashboard apps/prompt-dashboard apps/forge-dashboard
   apps/rag-playground apps/evals-dashboard core/api core/auth core/db core/mcp
-  core/deploy packages/forge-sdk packages/ui-components packages/rag-utils
+  core/deploy packages/forge-sdk packages/ui packages/rag-utils
   packages/eval-utils projects/landing-dashboard projects/prompt-dashboard
   projects/rag-playground projects/evals-dashboard experiments infra/docker infra/nginx
   infra/scripts mcp/forge-server/src/forge_mcp docs/architecture docs/decisions

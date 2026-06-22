@@ -13,7 +13,7 @@ application:
 dependencies:
   forge_core: false
   packages:
-    - ui-components
+    - ui
 deployment:
   service_name: landing-dashboard
   healthcheck: /

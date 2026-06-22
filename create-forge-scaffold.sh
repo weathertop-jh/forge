@@ -29,7 +29,7 @@ create_readme() {
 directories=(
   apps/landing-dashboard apps/prompt-dashboard apps/forge-dashboard
   apps/rag-playground apps/evals-dashboard core/api core/auth core/db core/mcp
-  core/deploy packages/forge-sdk packages/ui-components packages/rag-utils
+  core/deploy packages/forge-sdk packages/ui packages/rag-utils
   packages/eval-utils projects/landing-dashboard projects/prompt-dashboard
   projects/rag-playground projects/evals-dashboard experiments infra/docker infra/nginx
   infra/scripts mcp/forge-server/src/forge_mcp docs/architecture docs/decisions
@@ -238,7 +238,7 @@ EOF
 
 create_readme packages Packages "Reusable libraries shared by apps and platform services live here."
 create_readme packages/forge-sdk "Forge SDK" "Typed clients and integration helpers for consuming Forge platform APIs."
-create_readme packages/ui-components "UI Components" "Shared Next.js-compatible React, Tailwind CSS, shadcn/ui, and Framer Motion building blocks."
+create_readme packages/ui "UI Components" "Shared Next.js-compatible React, Tailwind CSS, shadcn/ui, and Framer Motion building blocks."
 create_readme packages/rag-utils "RAG Utilities" "Reusable ingestion, retrieval, chunking, and vector-search utilities."
 create_readme packages/eval-utils "Evaluation Utilities" "Reusable datasets, scoring helpers, and evaluation-run primitives."
 
@@ -260,7 +260,7 @@ application:
 dependencies:
   forge_core: false
   packages:
-    - ui-components
+    - ui
 deployment:
   service_name: landing-dashboard
   healthcheck: /
@@ -286,7 +286,7 @@ dependencies:
   forge_core: true
   packages:
     - forge-sdk
-    - ui-components
+    - ui
     - eval-utils
 deployment:
   service_name: prompt-dashboard
@@ -313,7 +313,7 @@ dependencies:
   forge_core: true
   packages:
     - forge-sdk
-    - ui-components
+    - ui
     - rag-utils
 deployment:
   service_name: rag-playground
@@ -340,7 +340,7 @@ dependencies:
   forge_core: true
   packages:
     - forge-sdk
-    - ui-components
+    - ui
     - eval-utils
 deployment:
   service_name: evals-dashboard

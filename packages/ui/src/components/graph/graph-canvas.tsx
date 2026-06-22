@@ -1,0 +1,10 @@
+import { createContext, useContext, useId, type CSSProperties, type HTMLAttributes, type PropsWithChildren } from "react"; import type { NormalizedPoint } from "../../lib/types"; import { cx } from "../../lib/class-names";
+interface GraphCanvasContextValue { id: string; toPercent: (point: NormalizedPoint) => { left: string; top: string } }
+const Context = createContext<GraphCanvasContextValue | null>(null);
+export interface GraphCanvasProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> { safeArea?: string }
+export function GraphCanvas({ children, safeArea = "max(24px, 4vmin)", className, style, ...props }: GraphCanvasProps) { const id = useId(); return <Context.Provider value={{ id, toPercent: (point) => ({ left: `${point.x * 100}%`, top: `${point.y * 100}%` }) }}><div {...props} className={cx("forge-graph-canvas relative isolate overflow-hidden", className)} style={{ ...style, "--forge-safe-area": safeArea } as CSSProperties}>{children}</div></Context.Provider>; }
+export function useGraphCanvas() { const value = useContext(Context); if (!value) throw new Error("useGraphCanvas must be used within GraphCanvas"); return value; }
+export function GraphCanvasParticles({ children, className }: PropsWithChildren<{ className?: string }>) { return <div aria-hidden="true" className={cx("pointer-events-none absolute inset-0", className)} data-graph-layer="particles">{children}</div>; }
+export function GraphCanvasThreads({ children, className }: PropsWithChildren<{ className?: string }>) { return <svg aria-hidden="true" className={cx("pointer-events-none absolute inset-0 size-full", className)} data-graph-layer="threads" preserveAspectRatio="none" viewBox="0 0 100 100">{children}</svg>; }
+export function GraphCanvasNodes({ children, className }: PropsWithChildren<{ className?: string }>) { return <div className={cx("absolute inset-[var(--forge-safe-area)]", className)} data-graph-layer="nodes">{children}</div>; }
+export function GraphCanvasForeground({ children, className }: PropsWithChildren<{ className?: string }>) { return <div className={cx("absolute inset-0", className)} data-graph-layer="foreground">{children}</div>; }
